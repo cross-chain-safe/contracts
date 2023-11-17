@@ -5,6 +5,7 @@ import "./MailBoxClient.sol";
 import "../interfaces/IMessageRecipient.sol";
 
 contract CrossChainSafeHandler is IMessageRecipient, MailboxClient  {
+    constructor(address _mailbox) MailboxClient(_mailbox) {}
 
     // Implement this function to handle the message
     function handle(
@@ -12,6 +13,4 @@ contract CrossChainSafeHandler is IMessageRecipient, MailboxClient  {
         bytes32 _sender,
         bytes calldata _message
     ) external payable {}
-
-
 }

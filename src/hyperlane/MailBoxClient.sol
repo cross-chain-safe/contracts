@@ -80,7 +80,7 @@ abstract contract MailboxClient is OwnableUpgradeable {
         address _interchainSecurityModule,
         address _owner
     ) internal onlyInitializing {
-        __Ownable_init();
+        __Ownable_init(_owner);
         setHook(_hook);
         setInterchainSecurityModule(_interchainSecurityModule);
         _transferOwnership(_owner);
