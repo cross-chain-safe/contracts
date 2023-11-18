@@ -2,10 +2,10 @@
 pragma solidity >=0.6.11;
 
 // ============ Internal Imports ============
-import {IMailbox} from "../interfaces/IMailbox.sol";
-import {IPostDispatchHook} from "../interfaces/hooks/IPostDispatchHook.sol";
-import {IInterchainSecurityModule} from "../interfaces/IInterchainSecurityModule.sol";
-import {Message} from "../libs/Message.sol";
+import {IMailbox} from "./interfaces/IMailbox.sol";
+import {IPostDispatchHook} from "./interfaces/hooks/IPostDispatchHook.sol";
+import {IInterchainSecurityModule} from "./interfaces/IInterchainSecurityModule.sol";
+import {Message} from "./libs/Message.sol";
 
 // ============ External Imports ============
 import { Address } from "openzeppelin-contracts/contracts/utils/Address.sol";
