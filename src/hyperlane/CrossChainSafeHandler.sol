@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./MailBoxClient.sol";
-import "./interfaces/IMessageRecipient.sol";
+import {MailboxClient} from "hyperlane-monorepo/solidity/contracts/client/MailboxClient.sol";
+import {IMessageRecipient} from "hyperlane-monorepo/solidity/contracts/interfaces/IMessageRecipient.sol";
 
 contract CrossChainSafeHandler is IMessageRecipient, MailboxClient  {
     constructor(address _mailbox) MailboxClient(_mailbox) {}
