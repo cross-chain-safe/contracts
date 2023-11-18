@@ -10,3 +10,6 @@
 [submodule "lib/safe-core-protocol"]
 	path = lib/safe-core-protocol
 	url = https://github.com/safe-global/safe-core-protocol
+[submodule "lib/relay-context-contracts"]
+	path = lib/relay-context-contracts
+	url = https://github.com/gelatodigital/relay-context-contracts
