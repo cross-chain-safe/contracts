@@ -10,3 +10,6 @@
 [submodule "lib/safe-core-protocol"]
 	path = lib/safe-core-protocol
 	url = https://github.com/safe-global/safe-core-protocol
+[submodule "lib/hyperlane-monorepo"]
+	path = lib/hyperlane-monorepo
+	url = https://github.com/hyperlane-xyz/hyperlane-monorepo
