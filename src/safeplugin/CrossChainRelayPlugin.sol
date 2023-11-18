@@ -12,6 +12,7 @@ contract CrossChainRelayPlugin is BasePluginWithEventMetadata, ISafePlugin {
     error UntrustedOrigin(address origin);
     error OriginSafeNotWhitelisted(address originSafe, uint32 chainDomain);
     error ManagerNotRegistered(address manager);
+    error FailedToExecuteTransaction();
 
     event PluginExecutedFromSafe(address indexed safe, address indexed originSafe, uint32 indexed chainDomain);
 
@@ -52,7 +53,11 @@ contract CrossChainRelayPlugin is BasePluginWithEventMetadata, ISafePlugin {
         });
 
         ISafeProtocolManager manager = ISafeProtocolManager(safePlugins[address(safe)]);
-        manager.executeTransaction(address(safe), safetx);
+        bytes[] memory execResponse = manager.executeTransaction(address(safe), safetx);
+
+        if (execResponse.length == 0) {
+            revert FailedToExecuteTransaction();
+        }
 
         emit PluginExecutedFromSafe(address(safe), originSafe, chainDomain);
     }
