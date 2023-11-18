@@ -12,13 +12,11 @@ contract CrossChainRelayPlugin is BasePluginWithEventMetadata {
     error OriginSafeNotWhitelisted(address originSafe, uint32 chainDomain);
 
     address public immutable trustedOrigin;
-    bytes4 public immutable relayMethod;
 
     mapping(address safe => mapping(uint32 chainDomain => mapping(address originSafe => bool))) public whitelist;
 
     constructor(
-        address _trustedOrigin,
-        bytes4 _relayMethod
+        address _trustedOrigin
     )
         BasePluginWithEventMetadata(
             PluginMetadata({
@@ -31,7 +29,6 @@ contract CrossChainRelayPlugin is BasePluginWithEventMetadata {
         )
     {
         trustedOrigin = _trustedOrigin;
-        relayMethod = _relayMethod;
     }
 
     function executeFromPlugin(ISafeProtocolManager manager, IAccount safe, address originSafe, uint32 chainDomain, bytes calldata encodedTransactionData) external {
