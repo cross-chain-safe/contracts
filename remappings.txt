@@ -1,2 +1,10 @@
-@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/
 @openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/
+@openzeppelin/contracts/=lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/
+ds-test/=lib/forge-std/lib/ds-test/src/
+erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/
+forge-std/=lib/forge-std/src/
+hyperlane-monorepo/=lib/hyperlane-monorepo/
+openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/
+openzeppelin-contracts/=lib/openzeppelin-contracts/
+openzeppelin/=lib/openzeppelin-contracts/contracts/
+safe-core-protocol/=lib/safe-core-protocol/contracts/
