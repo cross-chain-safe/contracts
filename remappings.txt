@@ -6,4 +6,5 @@ forge-std/=lib/forge-std/src/
 openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/
 openzeppelin-contracts/=lib/openzeppelin-contracts/
 openzeppelin/=lib/openzeppelin-contracts/contracts/
+relay-context-contracts/=lib/relay-context-contracts/contracts/
 safe-core-protocol/=lib/safe-core-protocol/contracts/
