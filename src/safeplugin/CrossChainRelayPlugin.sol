@@ -2,14 +2,13 @@
 pragma solidity ^0.8.18;
 
 import {BasePluginWithEventMetadata, PluginMetadata} from "./Base.sol";
-import {ISafe} from "@safe-global/safe-core-protocol/contracts/interfaces/Accounts.sol";
-import {ISafeProtocolManager} from "@safe-global/safe-core-protocol/contracts/interfaces/Manager.sol";
-import {SafeTransaction, SafeProtocolAction} from "@safe-global/safe-core-protocol/contracts/DataTypes.sol";
-import {_getFeeCollectorRelayContext, _getFeeTokenRelayContext, _getFeeRelayContext} from "@gelatonetwork/relay-context/contracts/GelatoRelayContext.sol";
+import {SafeTransaction, SafeProtocolAction} from "safe-core-protocol/DataTypes.sol";
+import {ISafeProtocolManager} from "safe-core-protocol/interfaces/Manager.sol";
+import {IAccount} from "safe-core-protocol/interfaces/Accounts.sol";
 
 address constant NATIVE_TOKEN = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
 
-contract CrossChainRelayPlugin is BasePluginWithEventMetadata {
+abstract contract CrossChainRelayPlugin is BasePluginWithEventMetadata {
     event MaxFeeUpdated(address indexed account, address indexed feeToken, uint256 maxFee);
 
     error FeeTooHigh(address feeToken, uint256 fee);
@@ -59,7 +58,7 @@ contract CrossChainRelayPlugin is BasePluginWithEventMetadata {
         if (!success) revert RelayExecutionFailure(data);
     }
 
-    function executeFromPlugin(ISafe safe, address originSafe, uint32 chainDomain, bytes calldata data) external {
+    function executeFromPlugin(IAccount safe, address originSafe, uint32 chainDomain, bytes calldata data) external {
         if (trustedOrigin != address(0) && msg.sender != trustedOrigin) revert UntrustedOrigin(msg.sender);
 
         if (!whitelist[address(safe)][chainDomain][originSafe]) revert OriginSafeNotWhitelisted(originSafe, chainDomain);

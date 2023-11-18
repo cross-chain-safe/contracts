@@ -1,36 +1,36 @@
 // SPDX-License-Identifier: LGPL-3.0-only
 pragma solidity ^0.8.18;
 
-import {ISafeProtocolPlugin} from "@safe-global/safe-core-protocol/contracts/interfaces/Integrations.sol";
+import {ISafeProtocolPlugin} from "safe-core-protocol/interfaces/Modules.sol";
 import {IERC165} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
-enum MetadataProviderType {
-    IPFS,
-    URL,
-    Contract,
-    Event
-}
+    enum MetadataProviderType {
+        IPFS,
+        URL,
+        Contract,
+        Event
+    }
 
 interface IMetadataProvider {
     function retrieveMetadata(bytes32 metadataHash) external view returns (bytes memory metadata);
 }
 
-struct PluginMetadata {
-    string name;
-    string version;
-    bool requiresRootAccess;
-    string iconUrl;
-    string appUrl;
-}
+    struct PluginMetadata {
+        string name;
+        string version;
+        bool requiresRootAccess;
+        string iconUrl;
+        string appUrl;
+    }
 
 library PluginMetadataOps {
     function encode(PluginMetadata memory data) internal pure returns (bytes memory) {
         return
             abi.encodePacked(
-                uint8(0x00), // Format
-                uint8(0x00), // Format version
-                abi.encode(data.name, data.version, data.requiresRootAccess, data.iconUrl, data.appUrl) // Plugin Metadata
-            );
+            uint8(0x00), // Format
+            uint8(0x00), // Format version
+            abi.encode(data.name, data.version, data.requiresRootAccess, data.iconUrl, data.appUrl) // Plugin Metadata
+        );
     }
 
     function decode(bytes calldata data) internal pure returns (PluginMetadata memory) {
